@@ -19,7 +19,7 @@ public class SignInByEmailPage extends Page{
         getDriver().findElement(passwordInput).sendKeys(password);
     }
 
-    public void signInClick(){
+    public void clickSignIn(){
         getDriver().findElement(signInButton).click();
     }
 }
