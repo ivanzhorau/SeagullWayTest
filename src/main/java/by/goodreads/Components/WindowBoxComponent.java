@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 
-public class WindowBoxComponent extends BasicComponent{
+public class WindowBoxComponent extends BasicComponent {
     private static final By rateComponent = By.cssSelector(".stars");
     private static final By startReadingDateComponent = By.cssSelector(".startedAtDatePickers");
     private static final By endReadingDateComponent = By.cssSelector(".endedAtDatePickers");
@@ -16,20 +16,27 @@ public class WindowBoxComponent extends BasicComponent{
         super(parentElement);
     }
 
-    public RateComponent getRateComponent(){
+    public RateComponent getRateComponent() {
         return new RateComponent(getParentElement().findElement(rateComponent));
     }
 
-    public DatePickerComponent getStartReadingDateComponent(){
+    public DatePickerComponent getStartReadingDateComponent() {
         return new DatePickerComponent(getParentElement().findElement(startReadingDateComponent));
     }
-    public DatePickerComponent getEndReadingDateComponent(){
+
+    public DatePickerComponent getEndReadingDateComponent() {
         return new DatePickerComponent(getParentElement().findElement(endReadingDateComponent));
     }
-    public void waitForLoad(){
+
+    public void waitForLoad() {
         new FluentWait<>(getParentElement()).withTimeout(Duration.ofSeconds(5)).until(webElement -> !webElement.findElements(By.cssSelector(".bookTitle")).isEmpty());
     }
-    public void clickPost(){
+
+    public void waitForClose() {
+        new FluentWait<>(getParentElement()).withTimeout(Duration.ofSeconds(5)).until(webElement -> !webElement.isDisplayed());
+    }
+
+    public void clickPost() {
         getParentElement().findElement(postButton).click();
     }
 }
