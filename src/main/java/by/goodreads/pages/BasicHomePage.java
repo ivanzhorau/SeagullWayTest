@@ -8,6 +8,9 @@ public class BasicHomePage extends Page{
     private static final By searchBoxInput = By.cssSelector(".searchBox__input--navbar");
     private static final By searchBoxButton = By.cssSelector(".searchBox__icon--navbar");
     private static final By windowBox = By.cssSelector("#box");
+    private static final By profileMenuButton = By.cssSelector(".siteHeader__personal .dropdown--profileMenu");
+    private static final By signOutButton = By.cssSelector("div.siteHeader__subNav li[role*='Sign out']");
+
     public BasicHomePage(WebDriver driver) {
         super(driver);
     }
@@ -22,5 +25,13 @@ public class BasicHomePage extends Page{
 
     public WindowBoxComponent getWindowBox(){
         return new WindowBoxComponent(getDriver().findElement(windowBox));
+    }
+
+    public void clickProfileMenu(){
+        getDriver().findElement(profileMenuButton).click();
+    }
+
+    public void clickSignOut(){
+        getDriver().findElement(signOutButton).click();
     }
 }
