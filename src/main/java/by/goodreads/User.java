@@ -8,11 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class User {
-    private String login, email, password;
+    private String name, email, password;
 
-    public User(String login, String email, String password){
+    public User(String name, String email, String password){
         this.email = email;
-        this.login = login;
+        this.name = name;
         this.password = password;
     }
 
@@ -26,16 +26,16 @@ public class User {
         }
         JSONObject object = new JSONObject(jsonString);
         JSONObject user = object.getJSONObject("users").getJSONObject(userName);
-        return new User(user.getString("login"), user.getString("email"), user.getString("password"));
+        return new User(user.getString("name"), user.getString("email"), user.getString("password"));
     }
 
 
-    public String getLogin() {
-        return login;
+    public String getName() {
+        return name;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
