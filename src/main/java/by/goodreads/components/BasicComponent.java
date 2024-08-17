@@ -1,4 +1,4 @@
-package by.goodreads.Components;
+package by.goodreads.components;
 
 import org.openqa.selenium.WebElement;
 

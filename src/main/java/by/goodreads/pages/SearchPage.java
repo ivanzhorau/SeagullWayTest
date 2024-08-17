@@ -1,6 +1,6 @@
 package by.goodreads.pages;
 
-import by.goodreads.Components.TableItemComponent;
+import by.goodreads.components.TableItemComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

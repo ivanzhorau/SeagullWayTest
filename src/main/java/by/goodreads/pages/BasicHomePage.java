@@ -1,6 +1,6 @@
 package by.goodreads.pages;
 
-import by.goodreads.Components.WindowBoxComponent;
+import by.goodreads.components.WindowBoxComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

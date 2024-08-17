@@ -1,10 +1,7 @@
-package by.goodreads.Components;
+package by.goodreads.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import java.util.Calendar;
-import java.util.Date;
 
 public class DatePickerComponent extends BasicComponent{
     private static final By yearSelectButton = By.cssSelector("select[class *= 'Year']");
