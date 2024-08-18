@@ -5,6 +5,11 @@
       "name": "Noctis Aeterna",
       "email": "ivanzhuraulievich@gmail.com",
       "password": "200416"
+    },
+    "user_wrong_password": {
+      "name": "Noctis Aeterna",
+      "email": "ivanzhuraulievich@gmail.com",
+      "password": "209416"
     }
   }
 }

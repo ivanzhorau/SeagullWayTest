@@ -4,12 +4,10 @@ import by.goodreads.User;
 import by.goodreads.components.TableItemComponent;
 import by.goodreads.components.WindowBoxComponent;
 import by.goodreads.pages.BasicHomePage;
-import by.goodreads.pages.SearchPage;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class MarkBookAsReadStep extends Step{
+public class MarkBookAsReadStep extends Step {
     private final User user;
     private final TableItemComponent tableItemComponent;
     private final Integer rate;
