@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GetTableItemsStep extends Step {
     private final User user;
-    private Holder<List<TableItemComponent>> tableItems;
+    private final Holder<List<TableItemComponent>> tableItems;
     public GetTableItemsStep(User user, Holder<List<TableItemComponent>> tableItems) {
         this.user = user;
         this.tableItems = tableItems;
