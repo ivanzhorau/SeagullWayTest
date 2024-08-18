@@ -3,6 +3,10 @@ package by.goodreads.components;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.text.DateFormatSymbols;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class DatePickerComponent extends BasicComponent{
     private static final By yearSelectButton = By.cssSelector("select[class *= 'Year']");
     private static final By monthSelectButton = By.cssSelector("select[class *= 'Month']");
@@ -24,9 +28,9 @@ public class DatePickerComponent extends BasicComponent{
         getParentElement().findElement(daySelectButton).findElement(By.xpath("option[text()='"+day+"']")).click();
     }
 
-    public void setDate(String year, String month, String day){
-        selectYear(year);
-        selectMonth(month);
-        selectDay(day);
+    public void setDate(Calendar date){
+        selectYear(String.valueOf(date.get(Calendar.YEAR)));
+        selectMonth(new DateFormatSymbols(Locale.ENGLISH).getMonths()[date.get(Calendar.MONTH)]);
+        selectDay(String.valueOf(date.get(Calendar.DAY_OF_MONTH)));
     }
 }
