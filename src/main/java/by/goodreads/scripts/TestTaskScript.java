@@ -5,7 +5,6 @@ import by.goodreads.User;
 import by.goodreads.components.TableItemComponent;
 import by.goodreads.steps.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,9 +12,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class TestTaskScript extends Script {
-    private User user01;
-    private User user02;
-    private Holder<List<TableItemComponent>> holder = new Holder<>();
+    private final User user01;
+    private final User user02;
+    private final Holder<List<TableItemComponent>> holder = new Holder<>();
     public TestTaskScript(WebDriver driver) {
         user01 = User.loadUserFromFile("src/main/resources/users.json", "user1", driver);
         user02 = User.loadUserFromFile("src/main/resources/users.json", "user_wrong_password", driver);
