@@ -4,6 +4,7 @@ import by.goodreads.components.WindowBoxComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+//Базовый класс для страниц залогиненого пользователя. Описаны элементы с шапки сайта
 public class BasicHomePage extends Page{
     private static final By searchBoxInput = By.cssSelector(".searchBox__input--navbar");
     private static final By searchBoxButton = By.cssSelector(".searchBox__icon--navbar");
@@ -23,6 +24,7 @@ public class BasicHomePage extends Page{
         getDriver().findElement(searchBoxButton).click();
     }
 
+    //Поместил это сюда, так как WindowBox встречается на разных страницах сайта
     public WindowBoxComponent getWindowBox(){
         return new WindowBoxComponent(getDriver().findElement(windowBox));
     }

@@ -12,5 +12,6 @@ public class Main {
         new TestTaskScript(driver).execute();
         new CleanupScript(driver).execute();
         driver.close();
+
     }
 }

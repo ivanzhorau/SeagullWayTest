@@ -1,7 +1,5 @@
 package by.goodreads.steps;
 
-import by.goodreads.scripts.Script;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,11 +12,11 @@ public abstract class Step {
 
     public void execute() throws Throwable {
         try {
-            logger.log(Level.INFO,String.format("Step: '%s' started%n", getSummary()));
+            logger.log(Level.INFO, String.format("Step: '%s' started%n", getSummary()));
             run();
-            logger.log(Level.INFO,String.format("Step: '%s' completed successfully%n", getSummary()));
+            logger.log(Level.INFO, String.format("Step: '%s' completed successfully%n", getSummary()));
         } catch (Throwable e) {
-            logger.log(Level.INFO,String.format("Step: '%s' failed%n", getSummary()));
+            logger.log(Level.INFO, String.format("Step: '%s' failed%n", getSummary()));
             role.process(e);
         }
     }
@@ -36,24 +34,27 @@ public abstract class Step {
     }
 
     public void skip() {
-        System.out.printf("     Step: '%s' skipped %n", getSummary());
+        logger.log(Level.INFO, String.format("Step: '%s' skipped %n", getSummary()));
     }
 
     public enum Role {
-        ACTION {
+        ACTION {  //В случае ошибки пропускает выполнение последующих степов в сценарии. Может быть пропущен сам
+
             @Override
             public void process(Throwable e) throws Throwable {
                 throw e;
             }
         },
-        CHECK {
+        CHECK {  //В случае ошибки просто пропускается не воздействуя на другие степы. Может быть пропущен
+
             @Override
             public void process(Throwable e) {
                 logger.log(Level.WARNING, e.toString());
 
             }
         },
-        CLEANUP {
+        CLEANUP { //В случае ошибки пропускает выполнение последующих степов в сценарии. Выполняется в любом случае
+
             @Override
             public void process(Throwable e) throws Throwable {
                 throw e;
@@ -61,6 +62,7 @@ public abstract class Step {
         };
 
         private static final Logger logger = Logger.getLogger(Role.class.getName());
+
         public abstract void process(Throwable e) throws Throwable;
     }
 }

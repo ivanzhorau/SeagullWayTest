@@ -12,7 +12,9 @@ import org.openqa.selenium.WebDriver;
 import java.util.ArrayList;
 import java.util.List;
 
+//Сделал по-быстрому, чтобы удалять книги из "My Books". Думаю лишним не будет
 public class CleanupScript extends Script {
+
     public CleanupScript(WebDriver driver) {
         User user01 = User.loadUserFromFile("src/main/resources/users.json", "user1", driver);
 

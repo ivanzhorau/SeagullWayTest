@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
+//Окно с результатами поиска
 public class SearchPage extends BasicHomePage {
     private static final By tableItem = By.cssSelector(".tableList > tbody > tr");
 
