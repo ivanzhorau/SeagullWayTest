@@ -5,19 +5,12 @@ import by.goodreads.scripts.TestTaskScript;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+//Думаю что стоит остановиться на этом. Кажется, я и так перемудрил немного
 public class Main {
-    public static void main(String[] args) throws Throwable {
+    public static void main(String[] args){
         WebDriver driver = new FirefoxDriver();
-        goodReadsFlow(driver);
-        cleanup(driver);
-        driver.close();
-    }
-
-    private static void cleanup(WebDriver driver) throws Throwable {
-        new CleanupScript(driver).execute();
-    }
-
-    private static void goodReadsFlow(WebDriver driver) throws Throwable {
         new TestTaskScript(driver).execute();
+        new CleanupScript(driver).execute();
+        driver.close();
     }
 }

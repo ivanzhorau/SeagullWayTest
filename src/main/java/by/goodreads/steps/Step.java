@@ -1,18 +1,24 @@
 package by.goodreads.steps;
 
+import by.goodreads.scripts.Script;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public abstract class Step {
 
     private Role role = Role.ACTION;
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     public abstract void run() throws Throwable;
 
     public void execute() throws Throwable {
         try {
-            System.out.printf("     Step: '%s' started%n", getSummary());
+            logger.log(Level.INFO,String.format("Step: '%s' started%n", getSummary()));
             run();
-            System.out.printf("     Step: '%s' completed successfully%n", getSummary());
+            logger.log(Level.INFO,String.format("Step: '%s' completed successfully%n", getSummary()));
         } catch (Throwable e) {
-            System.out.printf("     Step: '%s' failed%n", getSummary());
+            logger.log(Level.INFO,String.format("Step: '%s' failed%n", getSummary()));
             role.process(e);
         }
     }
@@ -43,7 +49,8 @@ public abstract class Step {
         CHECK {
             @Override
             public void process(Throwable e) {
-                e.printStackTrace();
+                logger.log(Level.WARNING, e.toString());
+
             }
         },
         CLEANUP {
@@ -53,6 +60,7 @@ public abstract class Step {
             }
         };
 
+        private static final Logger logger = Logger.getLogger(Role.class.getName());
         public abstract void process(Throwable e) throws Throwable;
     }
 }
