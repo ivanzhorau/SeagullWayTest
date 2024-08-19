@@ -56,13 +56,17 @@ public class TestTaskScript extends Script {
             @Override
             public void run() throws Throwable {
                 List<TableItemComponent> itemList = holder.getValue();
+                Calendar startDate = new GregorianCalendar(2023, Calendar.FEBRUARY, 27);
+                Calendar endDate = new GregorianCalendar(2023, Calendar.MARCH, 14);
                 for (int i = 0; i < 3; i++) {
+                    startDate.add(Calendar.MONTH,1);
+                    endDate.add(Calendar.MONTH,1);
                     new MarkBookAsReadStep(
                             user01,
                             itemList.get(i),
                             4,
-                            new GregorianCalendar(2023, Calendar.FEBRUARY, 27),
-                            new GregorianCalendar(2023, Calendar.MARCH, 14)).execute();
+                            startDate,
+                            endDate).execute();
 
                 }
             }
