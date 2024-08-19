@@ -8,6 +8,7 @@ public class LogoutStep extends Step {
 
     public LogoutStep(User user) {
         this.user = user;
+        setRole(Role.CLEANUP);
     }
 
     @Override

@@ -21,22 +21,38 @@ public abstract class Step {
         this.role = role;
     }
 
-    public String getSummary(){
+    public String getSummary() {
         return this.getClass().getName();
     }
-    public enum Role{
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void skip() {
+        System.out.printf("     Step: '%s' skipped %n", getSummary());
+    }
+
+    public enum Role {
         ACTION {
             @Override
             public void process(Throwable e) throws Throwable {
                 throw e;
             }
         },
-        CHECK{
+        CHECK {
             @Override
             public void process(Throwable e) {
                 e.printStackTrace();
             }
+        },
+        CLEANUP {
+            @Override
+            public void process(Throwable e) throws Throwable {
+                throw e;
+            }
         };
+
         public abstract void process(Throwable e) throws Throwable;
     }
 }
