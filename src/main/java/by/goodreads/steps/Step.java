@@ -4,15 +4,15 @@ public abstract class Step {
 
     private Role role = Role.ACTION;
 
-    public abstract void run();
+    public abstract void run() throws Throwable;
 
     public void execute() throws Throwable {
         try {
-            System.out.printf("Step: '%s' started%n", getSummary());
+            System.out.printf("     Step: '%s' started%n", getSummary());
             run();
-            System.out.printf("Step: '%s' completed successfully%n", getSummary());
+            System.out.printf("     Step: '%s' completed successfully%n", getSummary());
         } catch (Throwable e) {
-            System.out.printf("Step: '%s' failed%n", getSummary());
+            System.out.printf("     Step: '%s' failed%n", getSummary());
             role.process(e);
         }
     }
