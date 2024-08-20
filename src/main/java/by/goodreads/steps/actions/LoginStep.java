@@ -1,9 +1,10 @@
-package by.goodreads.steps;
+package by.goodreads.steps.actions;
 
 import by.goodreads.User;
 import by.goodreads.pages.SelectSignInTypePage;
 import by.goodreads.pages.SignInByEmailPage;
 import by.goodreads.pages.StartPage;
+import by.goodreads.steps.Step;
 import org.openqa.selenium.WebDriver;
 
 public class LoginStep extends Step {

@@ -1,9 +1,10 @@
-package by.goodreads.steps;
+package by.goodreads.steps.actions;
 
 import by.goodreads.User;
 import by.goodreads.components.TableItemComponent;
 import by.goodreads.components.WindowBoxComponent;
 import by.goodreads.pages.BasicHomePage;
+import by.goodreads.steps.Step;
 
 import java.util.Calendar;
 

@@ -1,9 +1,10 @@
-package by.goodreads.steps;
+package by.goodreads.steps.actions;
 
 import by.goodreads.Holder;
 import by.goodreads.User;
 import by.goodreads.components.TableItemComponent;
 import by.goodreads.pages.SearchPage;
+import by.goodreads.steps.Step;
 
 import java.util.List;
 

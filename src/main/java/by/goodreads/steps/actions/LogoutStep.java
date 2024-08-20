@@ -1,7 +1,8 @@
-package by.goodreads.steps;
+package by.goodreads.steps.actions;
 
 import by.goodreads.User;
 import by.goodreads.pages.BasicHomePage;
+import by.goodreads.steps.Step;
 
 public class LogoutStep extends Step {
     private final User user;

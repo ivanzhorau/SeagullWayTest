@@ -4,6 +4,8 @@ import by.goodreads.Holder;
 import by.goodreads.User;
 import by.goodreads.components.TableItemComponent;
 import by.goodreads.steps.*;
+import by.goodreads.steps.actions.*;
+import by.goodreads.steps.checks.CheckUserIsLoggedIn;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class TestTaskScript extends Script {
         steps.add(new LoginStep(user02));
         steps.add(new GoToUrlStep(driver, "https://www.goodreads.com/"));
         steps.add(new LoginStep(user01));
+        steps.add(new CheckUserIsLoggedIn(user01));
         steps.add(new SearchStep(user01, "Best crime and mystery books"));
         steps.add(new GetTableItemsStep(user01, holder));
         steps.add(markBooksAsWantToRead());

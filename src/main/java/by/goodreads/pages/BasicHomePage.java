@@ -11,6 +11,7 @@ public class BasicHomePage extends Page{
     private static final By windowBox = By.cssSelector("#box");
     private static final By profileMenuButton = By.cssSelector(".siteHeader__personal .dropdown--profileMenu");
     private static final By signOutButton = By.cssSelector("div.siteHeader__subNav li[role*='Sign out']");
+    private static final By userNameText = By.cssSelector("div.siteHeader__subNav span.siteHeader__subNavLink > span:nth-child(2)");
 
     public BasicHomePage(WebDriver driver) {
         super(driver);
@@ -35,5 +36,9 @@ public class BasicHomePage extends Page{
 
     public void clickSignOut(){
         getDriver().findElement(signOutButton).click();
+    }
+
+    public String getUserName(){
+       return getDriver().findElement(userNameText).getText();
     }
 }

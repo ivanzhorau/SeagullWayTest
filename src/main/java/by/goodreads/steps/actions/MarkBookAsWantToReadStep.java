@@ -1,8 +1,9 @@
-package by.goodreads.steps;
+package by.goodreads.steps.actions;
 
 import by.goodreads.components.TableItemComponent;
+import by.goodreads.steps.Step;
 
-public class MarkBookAsWantToReadStep extends Step{
+public class MarkBookAsWantToReadStep extends Step {
 
     private final TableItemComponent tableItemComponent;
 

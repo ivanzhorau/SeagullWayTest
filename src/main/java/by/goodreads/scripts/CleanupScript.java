@@ -1,9 +1,9 @@
 package by.goodreads.scripts;
 
 import by.goodreads.User;
-import by.goodreads.steps.GoToUrlStep;
-import by.goodreads.steps.LoginStep;
-import by.goodreads.steps.LogoutStep;
+import by.goodreads.steps.actions.GoToUrlStep;
+import by.goodreads.steps.actions.LoginStep;
+import by.goodreads.steps.actions.LogoutStep;
 import by.goodreads.steps.Step;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

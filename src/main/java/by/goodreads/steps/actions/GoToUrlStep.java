@@ -1,8 +1,9 @@
-package by.goodreads.steps;
+package by.goodreads.steps.actions;
 
+import by.goodreads.steps.Step;
 import org.openqa.selenium.WebDriver;
 
-public class GoToUrlStep extends Step{
+public class GoToUrlStep extends Step {
     private final WebDriver driver;
     private final String url;
     public GoToUrlStep(WebDriver driver, String url){
