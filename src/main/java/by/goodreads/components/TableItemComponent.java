@@ -17,16 +17,16 @@ public class TableItemComponent extends BasicComponent {
         super(parentElement);
     }
 
-    public void clickWantToRead(){
+    public void clickWantToRead() {
         getParentElement().findElement(wantToReadButton).click();
     }
 
-    public void markAsRead(){
+    public void markAsRead() {
         getParentElement().findElement(openShelfButton).click();
         getParentElement().findElement(readButton).click();
     }
 
-    public String getReadStatus(){
+    public String getReadStatus() {
         new FluentWait<>(getParentElement()).withTimeout(Duration.ofSeconds(5)).until(webElement -> !webElement.findElements(readStatusText).isEmpty());
         return getParentElement().findElement(readStatusText).getText();
     }

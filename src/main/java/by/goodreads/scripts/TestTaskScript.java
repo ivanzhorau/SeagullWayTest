@@ -5,7 +5,7 @@ import by.goodreads.User;
 import by.goodreads.components.TableItemComponent;
 import by.goodreads.steps.*;
 import by.goodreads.steps.actions.*;
-import by.goodreads.steps.checks.CheckBookMarkedAsWantToRead;
+import by.goodreads.steps.checks.CheckBookReadStatus;
 import by.goodreads.steps.checks.CheckUserIsLoggedIn;
 import org.openqa.selenium.WebDriver;
 
@@ -19,6 +19,7 @@ public class TestTaskScript extends Script {
     private final User user01;
     private final User user02;
     private final Holder<List<TableItemComponent>> holder = new Holder<>();
+
     public TestTaskScript(WebDriver driver) {
         user01 = User.loadUserFromFile("src/main/resources/users.json", "user1", driver);
         user02 = User.loadUserFromFile("src/main/resources/users.json", "user_wrong_password", driver);
@@ -38,14 +39,14 @@ public class TestTaskScript extends Script {
         setSteps(steps);
     }
 
-    private Step markBooksAsWantToRead(){
+    private Step markBooksAsWantToRead() {
         return new Step() {
             @Override
             public void run() throws Throwable {
                 List<TableItemComponent> itemList = holder.getValue();
                 for (int i = 0; i < 3; i++) {
                     new MarkBookAsWantToReadStep(itemList.get(i)).execute();
-                    new CheckBookMarkedAsWantToRead(itemList.get(i)).execute();
+                    new CheckBookReadStatus(itemList.get(i), "Want to Read").execute();
                 }
             }
 
@@ -56,7 +57,7 @@ public class TestTaskScript extends Script {
         };
     }
 
-    private Step markAsRead(){
+    private Step markAsRead() {
         return new Step() {
             @Override
             public void run() throws Throwable {
@@ -64,15 +65,15 @@ public class TestTaskScript extends Script {
                 Calendar startDate = new GregorianCalendar(2023, Calendar.FEBRUARY, 27);
                 Calendar endDate = new GregorianCalendar(2023, Calendar.MARCH, 14);
                 for (int i = 0; i < 3; i++) {
-                    startDate.add(Calendar.MONTH,1);
-                    endDate.add(Calendar.MONTH,1);
+                    startDate.add(Calendar.MONTH, 1);
+                    endDate.add(Calendar.MONTH, 1);
                     new MarkBookAsReadStep(
                             user01,
                             itemList.get(i),
                             4,
                             startDate,
                             endDate).execute();
-
+                    new CheckBookReadStatus(itemList.get(i), "Read").execute();
                 }
             }
 
