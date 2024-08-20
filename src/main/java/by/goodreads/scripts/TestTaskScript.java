@@ -5,6 +5,7 @@ import by.goodreads.User;
 import by.goodreads.components.TableItemComponent;
 import by.goodreads.steps.*;
 import by.goodreads.steps.actions.*;
+import by.goodreads.steps.checks.CheckBookMarkedAsWantToRead;
 import by.goodreads.steps.checks.CheckUserIsLoggedIn;
 import org.openqa.selenium.WebDriver;
 
@@ -44,6 +45,7 @@ public class TestTaskScript extends Script {
                 List<TableItemComponent> itemList = holder.getValue();
                 for (int i = 0; i < 3; i++) {
                     new MarkBookAsWantToReadStep(itemList.get(i)).execute();
+                    new CheckBookMarkedAsWantToRead(itemList.get(i)).execute();
                 }
             }
 
